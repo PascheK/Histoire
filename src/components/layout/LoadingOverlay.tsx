@@ -1,12 +1,20 @@
 // components/LoadingOverlay.tsx
 'use client'
 
+/**
+ * Full-screen overlay used to indicate loading during section changes. The
+ * visibility is controlled via `LoadingOverlayContext`.
+ */
+
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLoadingOverlay } from '@/context/LoadingOverlayContext'
 type Props = {
   text?: string
 }
 
+/**
+ * Render the loading overlay if `isVisible` from context is true.
+ */
 export default function LoadingOverlay({ text = 'Loading...' }: Props) {
   const { isVisible } = useLoadingOverlay()
 

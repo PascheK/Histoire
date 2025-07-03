@@ -1,6 +1,8 @@
 // components/FactHighlight.tsx
 'use client';
 
+/** Lightweight component for emphasising a single fact/value pair. */
+
 export default function FactHighlight({ label, value }: { label: string; value: string }) {
   return (
     <div className="bg-white/70 rounded-xl p-6 text-center shadow-lg max-w-xs">

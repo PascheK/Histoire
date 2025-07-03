@@ -1,5 +1,12 @@
 'use client'
 
+/**
+ * Internal component responsible for binding a video element to scroll progress
+ * using the `useScrollVideo` hook. Any overlay children are automatically
+ * cloned with the current video time injected so they can control their
+ * visibility.
+ */
+
 import {
   ReactElement,
   Children,
@@ -17,6 +24,11 @@ type Props = {
   activateTriggers?: boolean
 }
 
+/**
+ * Displays a video that advances as the user scrolls.
+ *
+ * @param props.source Video source and configuration for the scroll linkage.
+ */
 export default function ScrollVideoSection({
   src,
   scrollSpeed = 400,
@@ -51,7 +63,10 @@ export default function ScrollVideoSection({
           className="w-full h-full object-cover rounded-xl"
         />
 
-        {/* Children overlays injected with currentTime prop */}
+        {/*
+          Inject each overlay with the currentTime so it can decide when to
+          render itself.
+        */}
         {Children.map(children, (child) =>
           isValidElement<OverlayProps>(child)
             ? cloneElement(child, { currentTime })

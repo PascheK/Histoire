@@ -1,5 +1,10 @@
 import type { OverlayItem } from '@/types/overlay'
 
+/**
+ * Overlay configuration objects for each presentation phase. These values are
+ * consumed by `renderOverlays` to create actual overlay elements.
+ */
+
 export const beforeOverlays: OverlayItem[] = [
   {
     key: 'before-1',

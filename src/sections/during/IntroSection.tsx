@@ -1,6 +1,11 @@
 // During/IntroSection.tsx
 'use client'
 
+/**
+ * Intro for the "During" phase presenting key observations while the storm was
+ * ongoing.
+ */
+
 import { motion } from 'framer-motion'
 import SectionHeader from '@/components/common/SectionHeader'
 import BulletPointCard from '@/components/common/BulletPointCard'

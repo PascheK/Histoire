@@ -1,5 +1,9 @@
 'use client'
 
+/**
+ * Closing text for the "After" phase encouraging long-term recovery efforts.
+ */
+
 import { motion } from 'framer-motion'
 import SectionHeader from '@/components/common/SectionHeader'
 

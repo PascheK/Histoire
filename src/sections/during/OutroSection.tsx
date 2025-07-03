@@ -1,6 +1,10 @@
 // During/OutroSection.tsx
 'use client'
 
+/**
+ * Outro portion of the "During" phase highlighting immediate achievements.
+ */
+
 import { motion } from 'framer-motion'
 import SectionHeader from '@/components/common/SectionHeader'
 import BulletPointCard from '@/components/common/BulletPointCard'

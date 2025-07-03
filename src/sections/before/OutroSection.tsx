@@ -1,6 +1,10 @@
 // Before/OutroSection.tsx
 'use client'
 
+/**
+ * Outro for the "Before" phase summarising mitigation effects.
+ */
+
 import { motion } from 'framer-motion'
 import SectionHeader from '@/components/common/SectionHeader'
 import BulletPointCard from '@/components/common/BulletPointCard'

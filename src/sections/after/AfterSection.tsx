@@ -1,5 +1,10 @@
 'use client'
 
+/**
+ * Wraps the "After" phase video content and provides a trigger to return to the
+ * previous phase.
+ */
+
 import FullScrollSection from '@/components/FullScrollSection'
 import ScrollSectionTrigger from '@/components/ScrollSectionTrigger'
 import IntroSection from './IntroSection'

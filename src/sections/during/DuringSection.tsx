@@ -1,5 +1,10 @@
 'use client'
 
+/**
+ * Section handling the "During" phase. Contains a scroll-driven video and
+ * navigation triggers for moving between phases.
+ */
+
 import FullScrollSection from '@/components/FullScrollSection'
 import ScrollSectionTrigger from '@/components/ScrollSectionTrigger'
 import IntroSection from './IntroSection'

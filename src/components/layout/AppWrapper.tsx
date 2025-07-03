@@ -1,5 +1,11 @@
 'use client'
 
+/**
+ * Preloads essential assets (currently videos) before rendering the
+ * application. This prevents scroll-based calculations from running before the
+ * media metadata is available.
+ */
+
 import { useEffect, useState } from 'react'
 
 // List of videos to preload
@@ -11,6 +17,7 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
   useEffect(() => {
 
     const waitForVideos = async () => {
+      // create hidden video elements to preload metadata
       const loadPromises = videoSources.map((src) => {
         return new Promise<void>((resolve) => {
           const video = document.createElement('video')
@@ -26,7 +33,6 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
 
     waitForVideos()
   }, [])
-
 
   // Don't render children until the initial assets are preloaded
   if (!isReady) return null

@@ -1,5 +1,11 @@
 'use client'
 
+/**
+ * Coordinates the main scroll-driven presentation consisting of the
+ * "before", "during" and "after" phases. Handles navigation logic, transitions
+ * and displays a bottom navigation bar for manual section selection.
+ */
+
 import { useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import dynamic from 'next/dynamic'
@@ -9,6 +15,9 @@ const DuringSection = dynamic(() => import('@/sections/during/DuringSection'))
 const AfterSection = dynamic(() => import('@/sections/after/AfterSection'))
 import { useLoadingOverlay } from '@/context/LoadingOverlayContext'
 
+/**
+ * Main container orchestrating section transitions and navigation controls.
+ */
 export default function PresentationSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const lastSelected = useRef<'before' | 'during' | 'after' | null>(null)
@@ -19,6 +28,12 @@ export default function PresentationSection() {
 
 
   // Determines whether we're moving forward or backward in section flow
+  /**
+   * Returns the scroll direction between two sections.
+   *
+   * @param from - currently active section or null
+   * @param to - next section to navigate to
+   */
   function getScrollDirection(
     from: string | null,
     to: string
@@ -28,9 +43,13 @@ export default function PresentationSection() {
     return order.indexOf(to) > order.indexOf(from) ? 'forward' : 'backward'
   }
 
-  // Handles scroll and overlay transition after section animation
+  /**
+   * Called after a section transition animation completes. Handles scrolling to
+   * the appropriate element and showing a loading overlay during the movement.
+   */
   const handleAfterAnimate = () => {
     if (!lastSelected.current) {
+      // first load: simply show the overlay briefly before enabling scroll
       show();
       document.body.style.overflow = 'hidden'
       lastSelected.current = selected;
@@ -39,6 +58,7 @@ export default function PresentationSection() {
         document.body.style.overflow = '' // Restore scroll
       }, 1600);
     } else {
+      // on subsequent section changes we scroll the page to the next section
       if (!selected) return;
       const direction = !isNavbarChanged ? getScrollDirection(lastSelected.current, selected) : 'forward';
       const target = document.getElementById(`${selected}-section`);
@@ -46,17 +66,18 @@ export default function PresentationSection() {
 
       if (!target) return;
 
-      show(); // Affiche l'overlay
+      // show loading overlay while scrolling to the next section
+      show();
       document.body.style.overflow = 'hidden'
 
-      // Attends un peu pour que l'overlay apparaisse avant de scroller
+      // slight delay to allow the overlay to appear before scrolling
       setTimeout(() => {
         target.scrollIntoView({
           behavior: 'smooth',
           block: direction === 'forward' ? 'start' : 'end',
         });
 
-        // Cache l'overlay après un délai suffisant pour couvrir le scroll
+        // hide the overlay once scrolling is complete
         setTimeout(() => {
           hide();
           setIsNavbarChanged(false);
