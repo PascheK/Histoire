@@ -1,5 +1,10 @@
 'use client'
 
+/**
+ * Combines the intro, scroll video and outro for the "Before" phase.
+ * Overlays are built from configuration defined in `data/overlays`.
+ */
+
 import FullScrollSection from '@/components/FullScrollSection'
 import IntroSection from './IntroSection'
 import OutroSection from './OutroSection'

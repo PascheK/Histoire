@@ -2,6 +2,11 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
+/**
+ * Hook tying an HTML5 video to scroll progress via GSAP. Returns refs for the
+ * container, video element and wrapper as well as the current playback time.
+ */
+
 export type UseScrollVideoProps = {
   src: string
   scrollSpeed?: number
@@ -11,6 +16,14 @@ export type UseScrollVideoProps = {
 
 gsap.registerPlugin(ScrollTrigger)
 
+/**
+ * Attach scrolling behaviour to a video element.
+ *
+ * @param params.src          - path to the video file
+ * @param params.scrollSpeed  - multiplier used to calculate scroll height
+ * @param params.activate     - whether the ScrollTrigger should be active
+ * @param params.onReady      - called once video metadata is loaded
+ */
 export function useScrollVideo({
   src,
   scrollSpeed = 400,
@@ -30,6 +43,7 @@ export function useScrollVideo({
     const wrapper = wrapperRef.current
     if (!video || !container || !wrapper) return
 
+    // ensure previous ScrollTriggers are removed before creating new ones
     const killAll = () => {
       ScrollTrigger.getAll().forEach(t => t.kill())
       gsap.globalTimeline.clear()
@@ -41,6 +55,7 @@ export function useScrollVideo({
     const height = duration * scrollSpeed
     killAll()
 
+    // advance the video playback in sync with scroll position
     tween = gsap.to(video, {
       currentTime: duration,
       ease: 'none',
@@ -55,6 +70,7 @@ export function useScrollVideo({
       },
     })
 
+    // secondary trigger used to slightly scale the wrapper for a subtle effect
     ScrollTrigger.create({
       trigger: container,
       start: 'top top',
@@ -82,6 +98,7 @@ export function useScrollVideo({
     const video = videoRef.current
     if (!video) return
 
+    // invoke callback once metadata is ready so caller can start animations
     const onMeta = () => {
       onReady?.()
     }

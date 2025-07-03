@@ -2,6 +2,11 @@ import { AlertTriangle, Info, CheckCircle2, XOctagon } from 'lucide-react'
 import Overlay from '@/components/Overlay'
 import type { OverlayAlign, OverlayType, OverlayItem } from '@/types/overlay'
 
+/**
+ * Helper functions for creating styled overlay components from configuration
+ * objects.
+ */
+
 const baseOverlayClass = 'px-4 py-3 rounded-lg shadow-lg text-sm flex flex-col items-center gap-1 text-center sm:flex-row sm:gap-2 sm:text-left'
 
 const styleMap: Record<OverlayType, string> = {
@@ -18,6 +23,9 @@ const iconMap: Record<OverlayType, React.ReactNode> = {
   error: <XOctagon className="w-5 h-5" />,
 }
 
+/**
+ * Create a single overlay element.
+ */
 export function renderOverlay(
   key: string,
   appear: number,
@@ -41,6 +49,10 @@ export function renderOverlay(
   )
 }
 
+/**
+ * Convenience wrapper to convert an array of overlay definitions into React
+ * elements.
+ */
 export function renderOverlays(items: OverlayItem[]) {
   return items.map(item =>
     renderOverlay(

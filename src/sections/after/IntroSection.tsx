@@ -1,5 +1,10 @@
 'use client'
 
+/**
+ * Introductory screen for the "After" phase detailing recovery priorities and
+ * presenting early assessment data.
+ */
+
 import SectionHeader from '@/components/common/SectionHeader'
 import BulletPointCard from '@/components/common/BulletPointCard'
 import FactHighlight from '@/components/common/FactHighlight'

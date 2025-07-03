@@ -1,6 +1,8 @@
 // components/SectionHeader.tsx
 'use client';
 
+/** Simple centred heading used at the top of section intro/outro screens. */
+
 export default function SectionHeader({ title }: { title: string }) {
   return (
     <div className="w-full text-center mb-8">

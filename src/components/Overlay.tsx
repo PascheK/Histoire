@@ -1,5 +1,11 @@
 'use client'
 
+/**
+ * Animated overlay element that becomes visible when the current video time is
+ * within the provided `[appear, disappear]` range. Positioning is controlled
+ * via the `align` prop.
+ */
+
 import { motion, AnimatePresence } from 'framer-motion'
 import { ReactNode } from 'react'
 
@@ -21,6 +27,10 @@ export type OverlayProps = {
   children: ReactNode
 }
 
+/**
+ * Maps an alignment value to Tailwind classes describing where the overlay
+ * should appear on screen.
+ */
 function getPositionClass(align?: string): string {
   const base =
     'absolute p-3 sm:p-6 w-[92vw] max-w-xs sm:max-w-md lg:max-w-xl flex flex-col items-center justify-center max-h-[90vh] overflow-y-auto'
@@ -43,6 +53,11 @@ function getPositionClass(align?: string): string {
   return `${base} ${positionMap[alignment] || positionMap['center']}`
 }
 
+/**
+ * Displays content as an animated overlay tied to video playback.
+ *
+ * @param {OverlayProps} props Overlay configuration.
+ */
 export default function Overlay({
   appear,
   disappear,
@@ -51,6 +66,8 @@ export default function Overlay({
   className = '',
   children,
 }: OverlayProps) {
+  // Overlay is shown only when the current video timestamp falls within the
+  // designated range
   const isVisible =
     currentTime !== undefined &&
     currentTime >= appear &&

@@ -1,5 +1,10 @@
 'use client'
 
+/**
+ * Final section summarising the three phases and providing a downloadable
+ * report.
+ */
+
 import { motion } from 'framer-motion'
 import { Download } from 'lucide-react'
 import SectionHeader from '@/components/common/SectionHeader'

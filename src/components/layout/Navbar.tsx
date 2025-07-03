@@ -1,3 +1,4 @@
+/** Properties for the section navigation bar. */
 type Props = {
   selected: 'before' | 'during' | 'after' | null
   onSelect: (val: 'before' | 'during' | 'after') => void
@@ -6,12 +7,16 @@ type Props = {
   onNavbarChanged: (val: boolean) => void
 }
 
+/**
+ * Sticky bottom navigation allowing users to jump between sections.
+ */
 export default function Navbar({ selected, onSelect, canChangeSection, onChangeSection, onNavbarChanged }: Props) {
   const btnClass = (val: string) =>
     `px-6 py-2 rounded-full transition focus-visible:outline-none focus-visible:ring focus-visible:ring-white ${
       selected === val ? 'bg-white text-black font-bold' : 'bg-black/60 text-white'
     }`
   const handleClick = (section: 'before' | 'during' | 'after') => {
+    // prevent double clicks while a transition is running
     if (!canChangeSection || section === selected) return
     onChangeSection(false)
     onNavbarChanged(true)

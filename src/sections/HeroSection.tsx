@@ -1,5 +1,10 @@
 'use client'
 
+/**
+ * Landing hero introducing the storytelling experience.
+ * Displays a background image with animated text and a pulsing icon.
+ */
+
 import { motion } from 'framer-motion'
 import { AlertTriangle, ChevronDown } from 'lucide-react'
 import Image from 'next/image'

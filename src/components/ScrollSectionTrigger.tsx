@@ -1,5 +1,11 @@
 'use client'
 
+/**
+ * Invisible button used as a scroll trigger. When the element reaches the
+ * viewport the provided callback is executed, effectively moving to the next or
+ * previous section depending on `direction`.
+ */
+
 import { useLayoutEffect, useRef } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { motion } from 'framer-motion'
@@ -11,6 +17,10 @@ type ScrollSectionTriggerProps = {
   direction?: 'down' | 'up' // ← par défaut: 'down'
 }
 
+/**
+ * Component used to trigger a callback when scrolled into view. It doubles as a
+ * large button so users can manually progress the presentation.
+ */
 export default function ScrollSectionTrigger({
   onTrigger,
   text,
@@ -20,6 +30,9 @@ export default function ScrollSectionTrigger({
 
   useLayoutEffect(() => {
     if (!triggerRef.current) return
+
+    // create a ScrollTrigger tied to this element. When the element enters or
+    // leaves the viewport we invoke the callback based on the direction
 
     let trigger: ScrollTrigger | null = null
 
@@ -43,6 +56,7 @@ export default function ScrollSectionTrigger({
 
 
 
+  // choose icon based on scroll direction
   const Icon = direction === 'down' ? ChevronDown : ChevronUp
 
   return (

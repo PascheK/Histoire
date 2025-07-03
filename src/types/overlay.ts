@@ -1,6 +1,10 @@
 // types/overlay.ts
 
 /**
+ * Shared type definitions for video overlays used throughout the application.
+ */
+
+/**
  * Possible alignment values for an overlay.
  */
 export type OverlayAlign =

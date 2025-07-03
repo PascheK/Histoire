@@ -1,15 +1,20 @@
 // components/InfoTable.tsx
 'use client';
 
+/**
+ * Generic table component with a title, used to present small datasets within
+ * the story sections.
+ */
+
 import { ReactNode } from 'react';
 
-type Props = {
+interface InfoTableProps {
   title: string;
   headers: string[];
   rows: ReactNode[][];
 };
 
-export default function InfoTable({ title, headers, rows }: Props) {
+export default function InfoTable({ title, headers, rows }: InfoTableProps) {
   return (
     <div className="overflow-x-auto w-full max-w-4xl mx-auto rounded-lg shadow">
       <h4 className="text-lg font-semibold mb-4">{title}</h4>

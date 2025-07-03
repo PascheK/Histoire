@@ -1,6 +1,14 @@
 // Before/IntroSection.tsx
 'use client'
 
+/**
+ * Intro screen for the "Before" phase outlining preparation steps.
+ */
+
+/**
+ * Intro screen for the "Before" phase outlining preparation steps.
+ */
+
 import { motion } from 'framer-motion'
 import SectionHeader from '@/components/common/SectionHeader'
 import BulletPointCard from '@/components/common/BulletPointCard'
