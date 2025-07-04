@@ -13,7 +13,7 @@ export default function OutroSection() {
     <section className="min-h-screen flex flex-col items-center justify-center p-12 text-center bg-gray-100 text-black">
       <SectionHeader title="Our early-warning system automatically detects events and triggers response protocols." />
       <VideoPlayer
-  src="/videos/alert.mp4"
+  src="/videos/Alert.mp4"
   poster=""
   autoPlay
   muted
