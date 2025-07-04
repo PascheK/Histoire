@@ -29,7 +29,7 @@ export default function DuringSection({ onNext, onBack }: Props) {
         direction="up"
       />
       <FullScrollSection
-        videoSrc="/videos/test.mp4"
+        videoSrc="/videos/pre.mp4"
         sectionId="during-section"
         scrollSpeed={500}
         introSection={<IntroSection />}

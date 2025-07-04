@@ -6,6 +6,8 @@
 
 import { motion } from 'framer-motion'
 import SectionHeader from '@/components/common/SectionHeader'
+import VideoPlayer from '@/components/common/VideoPlayer'
+import IframePlayer from '@/components/common/IframePlayer'
 
 export default function OutroSection() {
   return (
@@ -19,6 +21,25 @@ export default function OutroSection() {
       >
         With damage assessed and resources mobilized, the focus now shifts to long-term recovery. Coordinated efforts will ensure safe rebuilding, informed planning, and stronger preparedness for the future.
       </motion.p>
+<VideoPlayer
+  src="/videos/Flood_Simulation.mp4"
+  poster=""
+  autoPlay
+  muted
+  loop
+  controls
+  className="rounded-xl shadow-xl"
+/>
+
+<IframePlayer
+  src="https://ims.unmas.org/portal/apps/dashboards/54adbd9526a646cf8135a30717b493c6"
+  allow="autoplay; encrypted-media"
+  allowFullScreen
+  className="rounded-xl shadow-md"
+/>
+
+
+
     </section>
   )
 }

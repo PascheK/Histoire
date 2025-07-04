@@ -17,10 +17,11 @@ export type OverlayAlign =
   | 'top right'
   | 'bottom left'
   | 'bottom right'
+  | 'fullscreen'
 
 import { ReactNode } from 'react'
 
-export type OverlayType = 'info' | 'warning' | 'success' | 'error'
+export type OverlayType = 'info' | 'warning' | 'success' | 'error' | 'transparent'
 
 export interface OverlayItem {
   key: string

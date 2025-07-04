@@ -5,7 +5,7 @@
 
 export default function SectionHeader({ title }: { title: string }) {
   return (
-    <div className="w-full text-center mb-8">
+    <div className="w-full sm:w-3/5 text-center mb-8">
       <h2 className="text-3xl sm:text-4xl font-bold mb-2">
         {title}
       </h2>

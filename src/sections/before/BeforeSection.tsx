@@ -23,7 +23,7 @@ export default function BeforeSection({ onNext }: Props) {
   return (
     <>
       <FullScrollSection
-        videoSrc="/videos/test.mp4"
+        videoSrc="/videos/pre.mp4"
         sectionId="before-section"
         scrollSpeed={500}
         introSection={<IntroSection />}

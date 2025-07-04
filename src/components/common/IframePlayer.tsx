@@ -1,0 +1,34 @@
+// components/common/IframePlayer.tsx
+"use client";
+
+import React from "react";
+import { cn } from "@/utils/cn"; // Facultatif : utilitaire pour fusionner les classes
+
+interface IframePlayerProps extends React.IframeHTMLAttributes<HTMLIFrameElement> {
+  src: string;
+  className?: string;
+  aspectRatio?: string; // Par défaut: 16/9
+}
+
+const IframePlayer: React.FC<IframePlayerProps> = ({
+  src,
+  className = "",
+  aspectRatio = "16/9",
+  ...props
+}) => {
+  return (
+    <div
+      className={cn("relative w-full overflow-hidden", className)}
+      style={{ aspectRatio }}
+    >
+      <iframe
+      title={src}
+        src={src}
+        className="absolute inset-0 h-full w-full border-0"
+        {...props}
+      />
+    </div>
+  );
+};
+
+export default IframePlayer;

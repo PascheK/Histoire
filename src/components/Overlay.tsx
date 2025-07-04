@@ -8,7 +8,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { ReactNode } from 'react'
-
+ 
 export type OverlayProps = {
   appear: number
   disappear?: number
@@ -23,6 +23,7 @@ export type OverlayProps = {
   | 'top right'
   | 'bottom left'
   | 'bottom right'
+  | 'fullscreen'
   className?: string
   children: ReactNode
 }
@@ -32,8 +33,9 @@ export type OverlayProps = {
  * should appear on screen.
  */
 function getPositionClass(align?: string): string {
-  const base =
-    'absolute p-3 sm:p-6 w-[92vw] max-w-xs sm:max-w-md lg:max-w-xl flex flex-col items-center justify-center max-h-[90vh] overflow-y-auto'
+  const base = align === 'fullscreen' ?
+    'absolute inset-0 p-6 w-screen h-screen flex items-center justify-center' :
+    'absolute p-3 sm:p-6 w-[100vw] max-w-xs sm:max-w-md lg:max-w-xl flex flex-col items-center justify-center max-h-[90vh] overflow-y-auto'
 
   const positionMap: Record<string, string> = {
     top: 'top-4 left-1/2 -translate-x-1/2 sm:left-1/2',
@@ -83,7 +85,8 @@ export default function Overlay({
           transition={{ duration: 0.4 }}
           className={`${getPositionClass(align)} ${className} z-50 backdrop-blur-sm bg-black/70 text-white rounded-xl shadow-lg`}
         >
-          <div className="text-center space-y-3 text-xs sm:text-sm md:text-base leading-relaxed">
+          <div className="w-full text-center space-y-3 text-xs sm:text-sm md:text-base leading-relaxed">
+            
             {children}
           </div>
         </motion.div>

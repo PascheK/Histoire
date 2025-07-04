@@ -9,7 +9,7 @@
 import { useEffect, useState } from 'react'
 
 // List of videos to preload
-const videoSources = ['/videos/test.mp4']
+const videoSources = ['/videos/pre.mp4']
 
 export default function AppWrapper({ children }: { children: React.ReactNode }) {
   const [isReady, setIsReady] = useState(false)
@@ -23,6 +23,10 @@ export default function AppWrapper({ children }: { children: React.ReactNode }) 
           const video = document.createElement('video')
           video.src = src
           video.preload = 'auto'
+          video.muted = true
+          video.playsInline = true
+          video.load() // ok ici car utilisé une seule fois
+
           video.addEventListener('loadedmetadata', () => resolve())
         })
       })

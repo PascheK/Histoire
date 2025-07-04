@@ -14,6 +14,7 @@ const styleMap: Record<OverlayType, string> = {
   warning: 'bg-yellow-600/90 text-black',
   success: 'bg-green-600/90 text-white',
   error: 'bg-red-600/90 text-white',
+  transparent: 'bg-transparent text-white',
 }
 
 const iconMap: Record<OverlayType, React.ReactNode> = {
@@ -21,6 +22,7 @@ const iconMap: Record<OverlayType, React.ReactNode> = {
   warning: <AlertTriangle className="w-5 h-5" />,
   success: <CheckCircle2 className="w-5 h-5" />,
   error: <XOctagon className="w-5 h-5" />,
+  transparent: <Info className="w-5 h-5" />, // Use info
 }
 
 /**

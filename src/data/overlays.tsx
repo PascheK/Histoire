@@ -1,3 +1,4 @@
+import PartnerNetwork from '@/components/PartnerNetwork';
 import type { OverlayItem } from '@/types/overlay'
 
 /**
@@ -9,65 +10,64 @@ export const beforeOverlays: OverlayItem[] = [
   {
     key: 'before-1',
     appear: 1,
-    disappear: 3,
+    disappear: 5,
     align: 'top left',
     type: 'info',
     content: (
-      <p className="text-sm">
-        📝 Coordination initiated with local authorities and emergency agencies ahead of landfall.
+      <p className="text-xl">
+        Before disaster strikes, we rely on open-source data to understand what&apos;s at risk, or what has been affected by a disaster
       </p>
     ),
     withIcon: false,
   },
   {
     key: 'before-2',
-    appear: 3,
-    disappear: 5,
+    appear: 4,
+    disappear: 10,
     align: 'bottom right',
     type: 'success',
     content: (
-      <p className="text-sm">
-        ✅ Emergency shelters inspected and stocked with essential supplies.
+      <p className="text-xl">
+        AI-based segmentation on VHR imagery provides high-quality building data, complementing open source datasets
       </p>
     ),
     withIcon: false,
   },
   {
     key: 'before-3',
-    appear: 5,
-    disappear: 7,
+    appear: 10,
+    disappear: 15,
     align: 'top right',
     type: 'warning',
     content: (
-      <p className="text-sm">
-        ⚠️ Public briefing issued: residents advised to secure homes and prepare for prolonged outages.
+      <p className="text-xl">
+        Early warning systems detect disasters in real time
       </p>
     ),
     withIcon: false,
   },
   {
     key: 'before-4',
-    appear: 7,
-    disappear: 10,
+    appear: 15,
+    disappear: 20,
     align: 'center',
-    type: 'error',
+    type: 'info',
     content: (
-      <p className="text-sm font-medium">
-        📡 Communications tested between command centers to ensure readiness.
+      <p className="text-xl font-medium">
+        Collaborating with local agencies and academics improves preparedness and resilience
       </p>
     ),
     withIcon: false,
   },
   {
     key: 'before-5',
-    appear: 10,
-    disappear: 13,
-    align: 'bottom left',
-    type: 'info',
+    appear: 20,
+    disappear: 25,
+    align: 'fullscreen',
+    type: 'transparent',
     content: (
-      <p className="text-sm">
-        🧭 Evacuation routes identified and shared with community leaders.
-      </p>
+            <PartnerNetwork />
+      
     ),
     withIcon: false,
   },

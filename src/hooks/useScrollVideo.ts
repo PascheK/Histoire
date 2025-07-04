@@ -34,6 +34,7 @@ export function useScrollVideo({
   const videoRef = useRef<HTMLVideoElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [currentTime, setCurrentTime] = useState(0)
+      const lastFrame = useRef(0)
 
   useEffect(() => {
     if (!activate) return
@@ -54,21 +55,30 @@ export function useScrollVideo({
     if (!isFinite(duration) || duration === 0) return
     const height = duration * scrollSpeed
     killAll()
+    const playhead = { frame: 0 }
 
     // advance the video playback in sync with scroll position
-    tween = gsap.to(video, {
-      currentTime: duration,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: container,
-        start: 'top top',
-        end: `+=${height}`,
-        scrub: true,
-        pin: true,
-        anticipatePin: 1,
-        onUpdate: () => setCurrentTime(video.currentTime),
-      },
-    })
+    tween = gsap.to(playhead, {
+  frame: duration,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: container,
+    start: 'top top',
+    end: `+=${height}`,
+    scrub: 0.1,
+    pin: true,
+    onUpdate: () => {
+video.currentTime = playhead.frame
+
+  // Seulement mettre à jour si le temps a changé de façon significative
+  if (Math.abs(lastFrame.current - playhead.frame) > 0.1) {
+    lastFrame.current = playhead.frame
+    setCurrentTime(playhead.frame)
+  }
+    },
+  },
+})
+
 
     // secondary trigger used to slightly scale the wrapper for a subtle effect
     ScrollTrigger.create({
@@ -104,7 +114,6 @@ export function useScrollVideo({
     }
 
     video.addEventListener('loadedmetadata', onMeta)
-    video.load()
     return () => {
       video.removeEventListener('loadedmetadata', onMeta)
     }
