@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import Lenis from 'lenis'
+import { useSmoothScroll } from '@/context/ScrollContext'
 
 /**
  * Hook tying an HTML5 video to scroll progress via GSAP. Returns refs for the
@@ -35,13 +35,21 @@ export function useScrollVideo({
   const videoRef = useRef<HTMLVideoElement>(null)
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [currentTime, setCurrentTime] = useState(0)
-      const lastFrame = useRef(0)
-  const lenis = new Lenis();
+  const lastFrame = useRef(0)
+  const { lenis } = useSmoothScroll()
 
   
   // Disable lag smoothing in GSAP to prevent any delay in scroll animations
-  gsap.ticker.lagSmoothing(0);
-    lenis.on('scroll', ScrollTrigger.update)
+  gsap.ticker.lagSmoothing(0)
+
+  useEffect(() => {
+    if (!lenis) return
+    const update = () => ScrollTrigger.update()
+    lenis.on('scroll', update)
+    return () => {
+      lenis.off('scroll', update)
+    }
+  }, [lenis])
   useEffect(() => {
     if (!activate) return
 
@@ -52,7 +60,7 @@ export function useScrollVideo({
 
     // ensure previous ScrollTriggers are removed before creating new ones
     const killAll = () => {
-      ScrollTrigger.getAll().forEach(t => t.kill())
+      ScrollTrigger.getAll().forEach((t) => t.kill())
       gsap.globalTimeline.clear()
     }
 
@@ -65,25 +73,25 @@ export function useScrollVideo({
 
     // advance the video playback in sync with scroll position
     tween = gsap.to(playhead, {
-  frame: duration,
-  ease: 'none',
-  scrollTrigger: {
-    trigger: container,
-    start: 'top top',
-    end: `+=${height}`,
-    scrub: 0.1,
-    pin: true,
-    onUpdate: () => {
-video.currentTime = playhead.frame
+      frame: duration,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: container,
+        start: 'top top',
+        end: `+=${height}`,
+        scrub: 0.1,
+        pin: true,
+        onUpdate: () => {
+          video.currentTime = playhead.frame
 
-  // Seulement mettre à jour si le temps a changé de façon significative
-  if (Math.abs(lastFrame.current - playhead.frame) > 0.1) {
-    lastFrame.current = playhead.frame
-    setCurrentTime(playhead.frame)
-  }
-    },
-  },
-})
+          // Seulement mettre à jour si le temps a changé de façon significative
+          if (Math.abs(lastFrame.current - playhead.frame) > 0.1) {
+            lastFrame.current = playhead.frame
+            setCurrentTime(playhead.frame)
+          }
+        },
+      },
+    })
 
 
     // secondary trigger used to slightly scale the wrapper for a subtle effect
@@ -92,7 +100,7 @@ video.currentTime = playhead.frame
       start: 'top top',
       end: `+=${height}`,
       scrub: true,
-      onUpdate: self => {
+      onUpdate: (self) => {
         const p = self.progress
         if (p < 0.15 || p > 0.85) {
           gsap.to(wrapper, { scale: 0.8, overwrite: 'auto' })
