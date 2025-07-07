@@ -39,6 +39,7 @@ export default function ScrollSectionTrigger({
     const rafId = requestAnimationFrame(() => {
       trigger = ScrollTrigger.create({
         trigger: triggerRef.current!,
+        markers: true,
         start: direction === 'down' ? 'center center' : 'center center',
         onEnter: () => direction === 'down' && onTrigger(),
         onLeaveBack: () => direction === 'up' && onTrigger(),

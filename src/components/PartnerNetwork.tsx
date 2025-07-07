@@ -11,7 +11,7 @@ const logos = [
   { name: "Oxford", x: "85", y: "60%", src: "/logos/Oxford-Logo.png" },
   { name: "EPFL", x: "25", y: "75%", src: "/logos/EPFL_Logo.png" },
   { name: "CMU", x: "75", y: "75%", src: "/logos/CMU_Logo.png" },
-  { name: "Johns Hopkins", x: "50", y: "85%", src: "/logos/JH_Logo.png" },
+  { name: "Johns Hopkins", x: "50", y: "80%", src: "/logos/JH_Logo.png" },
 ];
 
 export default function PartnerNetwork() {
