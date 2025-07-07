@@ -1,42 +1,47 @@
-'use client'
+"use client"
 
 import Lenis from "lenis"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import React, { useEffect, createContext, useContext, useState } from "react"
-type SmoothScrollContextType = {
-  lenisRef: Lenis | null
-}
-const SmoothScrollContext = createContext< SmoothScrollContextType | null>(null)
 
+type SmoothScrollContextType = {
+  lenis: Lenis | null
+}
+
+const SmoothScrollContext = createContext<SmoothScrollContextType | null>(null)
 
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
-  const [lenisRef, setLenisRef] = useState<Lenis | null>(null)
-  const [, setRafState] = useState<number | null>(null)
+  const [lenis, setLenis] = useState<Lenis | null>(null)
 
   useEffect(() => {
     const scroller = new Lenis()
-    let rf;
+    setLenis(scroller)
 
     function raf(time: number) {
       scroller.raf(time)
-      rf = requestAnimationFrame(raf)
+      requestAnimationFrame(raf)
     }
-    rf = requestAnimationFrame(raf);
-    setRafState(rf)
-    setLenisRef(scroller);
+    requestAnimationFrame(raf)
 
+    scroller.on("scroll", ScrollTrigger.update)
+
+    return () => {
+      scroller.off("scroll", ScrollTrigger.update)
+      scroller.destroy()
+    }
   }, [])
 
-    return (
-    <SmoothScrollContext.Provider value={{ lenisRef }}>
+  return (
+    <SmoothScrollContext.Provider value={{ lenis }}>
       {children}
     </SmoothScrollContext.Provider>
   )
-
 }
-
 
 export function useSmoothScroll() {
   const context = useContext(SmoothScrollContext)
-  if (!context) throw new Error('useLoadingOverlay must be used within LoadingOverlayProvider')
+  if (!context) {
+    throw new Error("useSmoothScroll must be used within SmoothScrollProvider")
+  }
   return context
 }

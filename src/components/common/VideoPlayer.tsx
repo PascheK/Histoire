@@ -22,7 +22,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   return (
     <div
       className={cn(
-        "relative w-full overflow-hidden bg-black md:max-w-2/3 max-w-full",
+        "relative w-full overflow-hidden bg-black md:max-w-[66%] max-w-full",
         className
       )}
       style={{
