@@ -28,10 +28,10 @@ export default function RecapSection() {
           the critical findings and actions undertaken at each step.
         </p>
           <IframePlayer
-  src="https://ims.unmas.org/portal/apps/dashboards/54adbd9526a646cf8135a30717b493c6"
+  src="https://geoportal-psc.unops.org/arcgis/apps/dashboards/8bbe3516127d4fd09c2f5235a22b26f1"
   allow="autoplay; encrypted-media"
   allowFullScreen
-  className=""
+  className="w-full"
 />  
  
         <motion.a
