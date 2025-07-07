@@ -13,7 +13,9 @@ import Navbar from './layout/Navbar'
 const BeforeSection = dynamic(() => import('@/sections/before/BeforeSection'))
 const DuringSection = dynamic(() => import('@/sections/during/DuringSection'))
 const AfterSection = dynamic(() => import('@/sections/after/AfterSection'))
+
 import { useLoadingOverlay } from '@/context/LoadingOverlayContext'
+import { useSmoothScroll } from '@/context/ScrollContext'
 
 /**
  * Main container orchestrating section transitions and navigation controls.
@@ -25,6 +27,7 @@ export default function PresentationSection() {
   const [canChangeSection, setCanChangeSection] = useState(true)
   const [isNavbarChanged, setIsNavbarChanged] = useState(false)
   const { show, hide } = useLoadingOverlay()
+  const { lenis } = useSmoothScroll()
 
 
   // Determines whether we're moving forward or backward in section flow
@@ -52,9 +55,11 @@ export default function PresentationSection() {
       // first load: simply show the overlay briefly before enabling scroll
       show();
       document.body.style.overflow = 'hidden'
+      lenis?.stop();
       lastSelected.current = selected;
       setTimeout(() => {
         hide();
+        lenis?.start();
         document.body.style.overflow = '' // Restore scroll
       }, 1600);
     } else {
@@ -69,7 +74,7 @@ export default function PresentationSection() {
       // show loading overlay while scrolling to the next section
       show();
       document.body.style.overflow = 'hidden'
-
+      lenis?.stop();
       // slight delay to allow the overlay to appear before scrolling
       setTimeout(() => {
         target.scrollIntoView({
@@ -83,7 +88,7 @@ export default function PresentationSection() {
           setIsNavbarChanged(false);
           setCanChangeSection(true);
           document.body.style.overflow = '' // Restore scroll
-
+          lenis?.start();
         }, 1600); // ajuste en fonction de ton scroll/transition
       }, 100); // petit délai pour éviter le "flash"
     }
@@ -108,6 +113,7 @@ export default function PresentationSection() {
               <BeforeSection
                 onNext={() => {
                   if (!canChangeSection) return;
+                  lenis?.stop();
                   document.body.style.overflow = 'hidden'
                   setCanChangeSection(false);
                   setSelected('during')
@@ -118,12 +124,14 @@ export default function PresentationSection() {
               <DuringSection
                 onNext={() => {
                   if (!canChangeSection) return;
+                  lenis?.stop();
                   document.body.style.overflow = 'hidden'
                   setCanChangeSection(false);
                   setSelected('after')
                 }}
                 onBack={() => {
                   if (!canChangeSection) return;
+                  lenis?.stop();
                   document.body.style.overflow = 'hidden'
                   setCanChangeSection(false);
                   setSelected('before')
@@ -134,6 +142,7 @@ export default function PresentationSection() {
               <AfterSection
                 onBack={() => {
                   if (!canChangeSection) return;
+                  lenis?.stop();
                   document.body.style.overflow = 'hidden'
                   setCanChangeSection(false);
                   setSelected('during')
