@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Lenis from 'lenis'
 
 /**
  * Hook tying an HTML5 video to scroll progress via GSAP. Returns refs for the
@@ -35,7 +36,12 @@ export function useScrollVideo({
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [currentTime, setCurrentTime] = useState(0)
       const lastFrame = useRef(0)
+  const lenis = new Lenis();
 
+  
+  // Disable lag smoothing in GSAP to prevent any delay in scroll animations
+  gsap.ticker.lagSmoothing(0);
+    lenis.on('scroll', ScrollTrigger.update)
   useEffect(() => {
     if (!activate) return
 

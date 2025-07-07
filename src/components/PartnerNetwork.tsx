@@ -7,11 +7,11 @@ import { useInView } from "framer-motion";
 import Image from "next/image";
 
 const logos = [
-  { name: "MIT", x: "15%", y: "60%", src: "/logos/MIT-Logo.png" },
-  { name: "Oxford", x: "85%", y: "60%", src: "/logos/Oxford-Logo.png" },
-  { name: "EPFL", x: "25%", y: "75%", src: "/logos/EPFL_Logo.png" },
-  { name: "CMU", x: "75%", y: "70%", src: "/logos/CMU_Logo.png" },
-  { name: "Johns Hopkins", x: "50%", y: "85%", src: "/logos/JH_Logo.png" },
+  { name: "MIT", x: "15", y: "60%", src: "/logos/MIT-Logo.png" },
+  { name: "Oxford", x: "85", y: "60%", src: "/logos/Oxford-Logo.png" },
+  { name: "EPFL", x: "25", y: "75%", src: "/logos/EPFL_Logo.png" },
+  { name: "CMU", x: "75", y: "75%", src: "/logos/CMU_Logo.png" },
+  { name: "Johns Hopkins", x: "50", y: "85%", src: "/logos/JH_Logo.png" },
 ];
 
 export default function PartnerNetwork() {
@@ -49,18 +49,20 @@ export default function PartnerNetwork() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.6 }}
+        className="bg-white/60  absolute flex items-center justify-center w-auto h-24 rounded"
+                            style={{
+          top: "15%",
+          
+          transform: 'translate(-50%, -50%)',
+        }}
       >
                   <Image
             src={'/logos/Unops-Logo.png'}
             alt={'UNOPS Logo'}
             width={250}
             height={200}
-            className="object-contain z-10 absolute flex items-center justify-center w-auto h-24   "
-                    style={{
-          top: "20%",
-          left: "50%",
-          transform: 'translate(-50%, -50%)',
-        }}
+            className="object-contain z-10   "
+
           />
       </motion.div>
 
@@ -71,18 +73,20 @@ export default function PartnerNetwork() {
           initial={{ opacity: 0, scale: 0 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ delay: 0.3 + i * 0.2, duration: 0.5 }}
+                  className="bg-white/60  absolute flex items-center justify-center w-auto h-24 rounded"
+                            style={{
+          top: logo.y,
+          left: (Number(logo.x) - 8) + "%",
+          transform: 'translate(-50%, -50%)',
+        }}
         >
           <Image
             src={logo.src}
             alt={logo.name}
             width={200}
             height={100}
-            className="object-contain z-10 absolute flex items-center justify-center w-auto h-20"
-                      style={{
-            top: logo.y,
-            left: logo.x,
-            transform: 'translate(-50%, -50%)',
-          }}
+            className="object-contain z-10 h-24 p-4"
+
           />
         </motion.div>
       ))}

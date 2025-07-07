@@ -5,21 +5,17 @@
  * navigation triggers for moving between phases.
  */
 
-import FullScrollSection from '@/components/FullScrollSection'
 import ScrollSectionTrigger from '@/components/ScrollSectionTrigger'
 import IntroSection from './IntroSection'
 import OutroSection from './OutroSection'
-import { renderOverlays } from '@/utils/overlayUtils'
-import { useMemo } from 'react'
-import { duringOverlays } from '@/data/overlays'
-
+import {  useRef } from 'react'
 type Props = {
   onNext: () => void
   onBack: () => void
 }
 
 export default function DuringSection({ onNext, onBack }: Props) {
-  const overlays = useMemo(() => renderOverlays(duringOverlays), [])
+  const wrapperRef = useRef<HTMLDivElement>(null)
 
   return (
     <>
@@ -28,14 +24,10 @@ export default function DuringSection({ onNext, onBack }: Props) {
         text="Go back to the previous section"
         direction="up"
       />
-      <FullScrollSection
-        videoSrc="/videos/pre.mp4"
-        sectionId="during-section"
-        scrollSpeed={500}
-        introSection={<IntroSection />}
-        outroSection={<OutroSection />}
-        overlays={overlays}
-      />
+          <section id='during-section' ref={wrapperRef} className="relative bg-black text-white">
+           <IntroSection />
+            <OutroSection />
+          </section>
       <ScrollSectionTrigger
         onTrigger={onNext}
         text="Continue to the recovery section"

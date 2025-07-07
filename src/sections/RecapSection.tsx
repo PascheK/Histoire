@@ -8,6 +8,7 @@
 import { motion } from 'framer-motion'
 import { Download } from 'lucide-react'
 import SectionHeader from '@/components/common/SectionHeader'
+import IframePlayer from '@/components/common/IframePlayer'
 
 export default function RecapSection() {
   return (
@@ -17,7 +18,7 @@ export default function RecapSection() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="w-full max-w-4xl"
+        className="w-full max-w-4xl flex flex-col items-center gap-6"
       >
         <SectionHeader title="Crisis Response Summary" />
 
@@ -26,27 +27,13 @@ export default function RecapSection() {
           preparation, emergency management, and recovery. This page summarizes
           the critical findings and actions undertaken at each step.
         </p>
-
-        <div className="flex flex-col sm:grid sm:grid-cols-3 gap-6 mb-12 text-left text-white">
-          <div className="flex items-start gap-3 p-4 bg-white/10 rounded-lg backdrop-blur-md text-white text-sm sm:text-base max-w-xl">
-            <div className="w-6 h-6 flex items-center justify-center text-white">
-              <span>🧭</span>
-            </div>
-            <p className="leading-snug">🟡 Before: Local teams assessed emergency supplies, validated shelter locations, and activated early warning systems.</p>
-          </div>
-          <div className="flex items-start gap-3 p-4 bg-white/10 rounded-lg backdrop-blur-md text-white text-sm sm:text-base max-w-xl">
-            <div className="w-6 h-6 flex items-center justify-center text-white">
-              <span>🌪️</span>
-            </div>
-            <p className="leading-snug">🔴 During: Real-time damage monitoring, rescue coordination, and meteorological alerts enabled targeted interventions.</p>
-          </div>
-          <div className="flex items-start gap-3 p-4 bg-white/10 rounded-lg backdrop-blur-md text-white text-sm sm:text-base max-w-xl">
-            <div className="w-6 h-6 flex items-center justify-center text-white">
-              <span>🔧</span>
-            </div>
-            <p className="leading-snug">🟢 After: Population safety assessments, hospital reopenings, and debris clearance were initiated immediately.</p>
-          </div>
-        </div>
+          <IframePlayer
+  src="https://ims.unmas.org/portal/apps/dashboards/54adbd9526a646cf8135a30717b493c6"
+  allow="autoplay; encrypted-media"
+  allowFullScreen
+  className=""
+/>  
+ 
         <motion.a
           href="/beryl-report.pdf"
           download

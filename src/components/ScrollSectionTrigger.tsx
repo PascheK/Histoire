@@ -27,7 +27,7 @@ export default function ScrollSectionTrigger({
   direction = 'down',
 }: ScrollSectionTriggerProps) {
   const triggerRef = useRef<HTMLButtonElement>(null)
-
+  
   useLayoutEffect(() => {
     if (!triggerRef.current) return
 

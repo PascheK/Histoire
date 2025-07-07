@@ -12,6 +12,7 @@ import "../styles/globals.css";
 import LoadingOverlay from "@/components/layout/LoadingOverlay";
 import { LoadingOverlayProvider } from "@/context/LoadingOverlayContext";
 import AppWrapper from "@/components/layout/AppWrapper";
+import { SmoothScrollProvider } from "@/context/ScrollContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,15 +41,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <SmoothScrollProvider>
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <LoadingOverlayProvider>
-          <AppWrapper>{children}<LoadingOverlay text="Chargement..." />
+          <AppWrapper>{children}<LoadingOverlay text="Loading..." />
 </AppWrapper>
         </LoadingOverlayProvider>
       </body>
     </html>
+    </SmoothScrollProvider>
+
   );
 }

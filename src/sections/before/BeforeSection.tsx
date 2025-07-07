@@ -25,7 +25,7 @@ export default function BeforeSection({ onNext }: Props) {
       <FullScrollSection
         videoSrc="/videos/pre.mp4"
         sectionId="before-section"
-        scrollSpeed={500}
+        scrollSpeed={600}
         introSection={<IntroSection />}
         outroSection={<OutroSection />}
         overlays={overlays}

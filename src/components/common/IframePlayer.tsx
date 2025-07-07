@@ -18,13 +18,13 @@ const IframePlayer: React.FC<IframePlayerProps> = ({
 }) => {
   return (
     <div
-      className={cn("relative w-full overflow-hidden", className)}
+      className={cn("relative flex justify-center w-full overflow-hidden", className)}
       style={{ aspectRatio }}
     >
       <iframe
       title={src}
         src={src}
-        className="absolute inset-0 h-full w-full border-0"
+        className="absolute inset-0 h-full w-4/5 m-auto border-0 rounded-xl shadow-md"
         {...props}
       />
     </div>

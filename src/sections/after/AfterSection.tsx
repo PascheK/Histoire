@@ -28,9 +28,9 @@ export default function AfterSection({ onBack }: Props) {
         direction="up"
       />
       <FullScrollSection
-        videoSrc="/videos/pre.mp4"
+        videoSrc="/videos/post.mp4"
         sectionId="after-section"
-        scrollSpeed={500}
+        scrollSpeed={400}
         introSection={<IntroSection />}
         outroSection={<OutroSection />}
         overlays={overlays}
