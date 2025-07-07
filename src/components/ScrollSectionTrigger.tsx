@@ -39,9 +39,19 @@ export default function ScrollSectionTrigger({
     const rafId = requestAnimationFrame(() => {
       trigger = ScrollTrigger.create({
         trigger: triggerRef.current!,
-        start: direction === 'down' ? 'center center' : 'center center',
-        onEnter: () => direction === 'down' && onTrigger(),
-        onLeaveBack: () => direction === 'up' && onTrigger(),
+        start: 'center center',
+        onEnter: () => {
+          if (direction === 'down') {
+            document.body.style.overflow = 'hidden'
+            onTrigger()
+          }
+        },
+        onLeaveBack: () => {
+          if (direction === 'up') {
+            document.body.style.overflow = 'hidden'
+            onTrigger()
+          }
+        },
       })
       setTimeout(() => {
         ScrollTrigger.refresh()
