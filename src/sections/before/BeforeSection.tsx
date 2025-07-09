@@ -7,7 +7,6 @@
 
 import FullScrollSection from '@/components/FullScrollSection'
 import IntroSection from './IntroSection'
-import OutroSection from './OutroSection'
 import ScrollSectionTrigger from '@/components/ScrollSectionTrigger'
 import { renderOverlays } from '@/utils/overlayUtils'
 import { useMemo } from 'react'
@@ -27,7 +26,7 @@ export default function BeforeSection({ onNext }: Props) {
         sectionId="before-section"
         scrollSpeed={600}
         introSection={<IntroSection />}
-        outroSection={<OutroSection />}
+        outroSection={<></>}
         overlays={overlays}
       />
       <ScrollSectionTrigger
