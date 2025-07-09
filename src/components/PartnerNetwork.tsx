@@ -7,11 +7,11 @@ import { useInView } from "framer-motion";
 import Image from "next/image";
 
 const logos = [
-  { name: "MIT", x: "15", y: "60%", src: "/logos/MIT-Logo.png" },
-  { name: "Oxford", x: "85", y: "60%", src: "/logos/Oxford-Logo.png" },
-  { name: "EPFL", x: "25", y: "75%", src: "/logos/EPFL_Logo.png" },
-  { name: "CMU", x: "75", y: "75%", src: "/logos/CMU_Logo.png" },
-  { name: "Johns Hopkins", x: "50", y: "85%", src: "/logos/JH_Logo.png" },
+  { name: "MIT", x: "15", y: "55%", src: "/logos/MIT-Logo.png" },
+  { name: "Oxford", x: "85", y: "55%", src: "/logos/Oxford-Logo.png" },
+  { name: "EPFL", x: "25", y: "70%", src: "/logos/EPFL_Logo.png" },
+  { name: "CMU", x: "75", y: "70%", src: "/logos/CMU_Logo.png" },
+  { name: "Johns Hopkins", x: "50", y: "80%", src: "/logos/JH_Logo.png" },
 ];
 
 export default function PartnerNetwork() {
@@ -21,7 +21,7 @@ export default function PartnerNetwork() {
   return (
     <section
       ref={ref}
-      className="relative min-h-[80vh] w-full flex items-center justify-center overflow-hidden px-4 py-16"
+      className="relative min-h-[85vh] w-full flex items-center justify-center overflow-hidden px-4 py-16"
     >
       {/* Lignes de connexion */}
       <svg
@@ -38,7 +38,7 @@ export default function PartnerNetwork() {
               x2={logo.x.replace("%", "")}
               y2={logo.y.replace("%", "")}
               stroke="#010"
-              strokeWidth="1"
+              strokeWidth="1.5"
               vectorEffect="non-scaling-stroke"
             />
           ))}
@@ -49,7 +49,7 @@ export default function PartnerNetwork() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{ duration: 0.6 }}
-        className="bg-white/60  absolute flex items-center justify-center w-auto h-24 rounded"
+        className="bg-white  absolute flex items-center justify-center w-auto h-24 rounded"
                             style={{
           top: "15%",
           
@@ -73,7 +73,7 @@ export default function PartnerNetwork() {
           initial={{ opacity: 0, scale: 0 }}
           animate={isInView ? { opacity: 1, scale: 1 } : {}}
           transition={{ delay: 0.3 + i * 0.2, duration: 0.5 }}
-                  className="bg-white/60  absolute flex items-center justify-center w-auto h-24 rounded"
+                  className="bg-white/70  absolute flex items-center justify-center w-auto h-10 sm:h-24 rounded"
                             style={{
           top: logo.y,
           left: (Number(logo.x) - 8) + "%",
@@ -85,7 +85,7 @@ export default function PartnerNetwork() {
             alt={logo.name}
             width={200}
             height={100}
-            className="object-contain z-10 h-24 p-4"
+            className="object-contain z-10 h-15 sm:h-24 p-4"
 
           />
         </motion.div>

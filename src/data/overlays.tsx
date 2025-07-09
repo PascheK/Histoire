@@ -14,7 +14,7 @@ export const beforeOverlays: OverlayItem[] = [
     align: 'top left',
     type: 'info',
     content: (
-      <p className="text-xl">
+      <p className="md:text-2xl text-xl font-medium">
         Before disaster strikes, we rely on open-source data to understand what&apos;s at risk, or what has been affected by a disaster
       </p>
     ),
@@ -27,7 +27,7 @@ export const beforeOverlays: OverlayItem[] = [
     align: 'bottom right',
     type: 'success',
     content: (
-      <p className="text-xl">
+      <p className="md:text-2xl text-xl font-medium">
         AI-based segmentation on VHR imagery provides high-quality building data, complementing open source datasets
       </p>
     ),
@@ -40,7 +40,7 @@ export const beforeOverlays: OverlayItem[] = [
     align: 'top right',
     type: 'warning',
     content: (
-      <p className="text-xl">
+      <p className="md:text-2xl text-xl font-medium">
         Early warning systems detect disasters in real time
       </p>
     ),
@@ -53,7 +53,7 @@ export const beforeOverlays: OverlayItem[] = [
     align: 'center',
     type: 'info',
     content: (
-      <p className="text-xl font-medium">
+      <p className="md:text-2xl text-xl font-medium">
         Collaborating with local agencies and academics improves preparedness and resilience
       </p>
     ),
@@ -81,7 +81,7 @@ export const afterOverlays: OverlayItem[] = [
     align: 'top left',
     type: 'info',
     content: (
-      <p className="text-sm">
+      <p className="md:text-2xl text-xl font-medium">
         Sentinel-1 CCD shows where structures are likely damaged.
       </p>
     ),
@@ -94,7 +94,7 @@ export const afterOverlays: OverlayItem[] = [
     align: 'center',
     type: 'info',
     content: (
-      <p className="text-sm font-medium">
+      <p className="md:text-2xl text-xl font-medium">
         Filtered SAM buildings intersecting Sentinel-1 CCD hotspots.
       </p>
     ),
@@ -107,7 +107,7 @@ export const afterOverlays: OverlayItem[] = [
     align: 'bottom right',
     type: 'info',
     content: (
-      <p className="text-sm">
+      <p className="md:text-2xl text-xl font-medium">
         Estimated debris volume per structure based on DSM elevation
       </p>
     ),
@@ -120,7 +120,7 @@ export const afterOverlays: OverlayItem[] = [
     align: 'top right',
     type: 'error',
     content: (
-      <p className="text-sm">
+      <p className="md:text-2xl text-xl font-medium">
         Analysis scaled across all affected islands
       </p>
     ),
