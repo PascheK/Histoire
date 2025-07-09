@@ -7,6 +7,7 @@ import { useInView } from "framer-motion";
 import Image from "next/image";
 
 const logos = [
+
   { name: "MIT", x: "15", y: "55%", src: "/logos/MIT-Logo.png" },
   { name: "Oxford", x: "85", y: "55%", src: "/logos/Oxford-Logo.png" },
   { name: "EPFL", x: "25", y: "70%", src: "/logos/EPFL_Logo.png" },

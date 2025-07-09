@@ -39,6 +39,7 @@ export default function ScrollSectionTrigger({
     const rafId = requestAnimationFrame(() => {
       trigger = ScrollTrigger.create({
         trigger: triggerRef.current!,
+
         start: 'center center',
         onEnter: () => {
           if (direction === 'down') {
@@ -52,6 +53,7 @@ export default function ScrollSectionTrigger({
             onTrigger()
           }
         },
+
       })
       setTimeout(() => {
         ScrollTrigger.refresh()
