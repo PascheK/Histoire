@@ -18,7 +18,7 @@ export default function RecapSection() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
         viewport={{ once: true }}
-        className="w-full max-w-4xl flex flex-col items-center gap-6"
+        className="w-full max-w-4/5 flex flex-col items-center gap-6"
       >
         <SectionHeader title="Crisis Response Summary" />
 

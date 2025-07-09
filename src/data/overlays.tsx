@@ -1,6 +1,6 @@
 import PartnerNetwork from '@/components/PartnerNetwork';
 import type { OverlayItem } from '@/types/overlay'
-
+import Image from 'next/image'
 /**
  * Overlay configuration objects for each presentation phase. These values are
  * consumed by `renderOverlays` to create actual overlay elements.
@@ -11,15 +11,26 @@ export const beforeOverlays: OverlayItem[] = [
     key: 'before-1',
     appear: 1,
     disappear: 5,
-    align: 'top left',
-    type: 'info',
+    align: 'center',
+    type: 'transparent',
     content: (
+      <>
       <p className="md:text-2xl text-xl font-medium">
         Before disaster strikes, we rely on open-source data to understand what&apos;s at risk, or what has been affected by a disaster
       </p>
+                      <Image
+            src={'/images/pre-ex.png'}
+            alt={'image of pre-disaster buildings'}
+            width={200}
+            height={100}
+            className="object-contain w-full lg:h-100 h-50"
+
+          />
+          </>
     ),
     withIcon: false,
   },
+    
   {
     key: 'before-2',
     appear: 4,
@@ -53,9 +64,19 @@ export const beforeOverlays: OverlayItem[] = [
     align: 'center',
     type: 'info',
     content: (
-      <p className="md:text-2xl text-xl font-medium">
+      <>  
+         <p className="md:text-2xl text-xl font-medium">
         Collaborating with local agencies and academics improves preparedness and resilience
       </p>
+                          <Image
+            src={'/images/pre-ex.png'}
+            alt={'image of pre-disaster buildings'}
+            width={200}
+            height={100}
+            className="object-contain w-full lg:h-100 h-50"
+
+          /></>
+   
     ),
     withIcon: false,
   },
@@ -120,9 +141,19 @@ export const afterOverlays: OverlayItem[] = [
     align: 'bottom right',
     type: 'info',
     content: (
+      <>
       <p className="md:text-2xl text-xl font-medium">
 Analysis scaled across all affected islands
      </p>
+      <Image
+            src={'/images/pre-ex.png'}
+            alt={'image of pre-disaster buildings'}
+            width={200}
+            height={100}
+            className="object-contain w-full lg:h-100 h-50"
+
+          />
+          </>
     ),
     withIcon: false,
   },
