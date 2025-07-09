@@ -60,7 +60,8 @@ export default function ScrollVideoSection({
           src={src}
           muted
           playsInline
-          className="w-full h-full object-cover rounded-xl"
+          preload="auto"
+          className="w-full h-full object-cover rounded-xl will-change-opacity"
         />
 
         {/*

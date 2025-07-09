@@ -46,6 +46,13 @@ export default function FullScrollSection({
       {/* Section Intro */}
       {introSection}
 
+      {/* Local loading state while the video buffers */}
+      {!videoReady && (
+        <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+          <p className="text-sm">Loading video...</p>
+        </div>
+      )}
+
       {/* Vidéo scrollable */}
       <ScrollVideoSection
         src={videoSrc}

@@ -1,6 +1,7 @@
 "use client"
 
 import Lenis from "lenis"
+import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import React, { useEffect, createContext, useContext, useState } from "react"
 
@@ -17,16 +18,20 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     const scroller = new Lenis()
     setLenis(scroller)
 
-    function raf(time: number) {
-      scroller.raf(time)
-      requestAnimationFrame(raf)
+    // sync Lenis with GSAP's internal ticker for consistent timing
+    const updateLenis = (time: number) => {
+      scroller.raf(time * 1000)
     }
-    requestAnimationFrame(raf)
 
-    scroller.on("scroll", ScrollTrigger.update)
+    gsap.ticker.add(updateLenis)
+    gsap.ticker.fps(30) // reduce frame updates to minimise jank
+
+    const handleScroll = () => ScrollTrigger.update()
+    scroller.on('scroll', handleScroll)
 
     return () => {
-      scroller.off("scroll", ScrollTrigger.update)
+      scroller.off('scroll', handleScroll)
+      gsap.ticker.remove(updateLenis)
       scroller.destroy()
     }
   }, [])
