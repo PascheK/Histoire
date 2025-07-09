@@ -89,13 +89,13 @@ export const afterOverlays: OverlayItem[] = [
   },
   {
     key: 'after-2',
-    appear: 6,
+    appear: 7,
     disappear: 11,
-    align: 'center',
+    align: 'top right',
     type: 'info',
     content: (
       <p className="md:text-2xl text-xl font-medium">
-        Filtered SAM buildings intersecting Sentinel-1 CCD hotspots.
+     Filtered SAM buildings intersecting Sentinel-1 CCD hotspots
       </p>
     ),
     withIcon: false,
@@ -104,7 +104,7 @@ export const afterOverlays: OverlayItem[] = [
     key: 'after-3',
     appear: 11,
     disappear: 18,
-    align: 'bottom right',
+    align: 'center',
     type: 'info',
     content: (
       <p className="md:text-2xl text-xl font-medium">
@@ -116,15 +116,16 @@ export const afterOverlays: OverlayItem[] = [
   {
     key: 'after-4',
     appear: 18,
-    disappear: 34,
-    align: 'top right',
-    type: 'error',
+    disappear: 36,
+    align: 'bottom right',
+    type: 'info',
     content: (
       <p className="md:text-2xl text-xl font-medium">
-        Analysis scaled across all affected islands
-      </p>
+Analysis scaled across all affected islands
+     </p>
     ),
     withIcon: false,
   },
+
   
 ];
