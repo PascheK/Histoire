@@ -36,6 +36,7 @@ export function useScrollVideo({
   const wrapperRef = useRef<HTMLDivElement>(null)
   const [currentTime, setCurrentTime] = useState(0)
   const lastFrame = useRef(0)
+  const targetTime = useRef(0)
   const { lenis } = useSmoothScroll()
 
   
@@ -82,13 +83,8 @@ export function useScrollVideo({
         scrub: 0.1,
         pin: true,
         onUpdate: () => {
-          video.currentTime = playhead.frame
-
-          // Seulement mettre à jour si le temps a changé de façon significative
-          if (Math.abs(lastFrame.current - playhead.frame) > 0.1) {
-            lastFrame.current = playhead.frame
-            setCurrentTime(playhead.frame)
-          }
+          // store the desired timestamp so the ticker can smoothly interpolate
+          targetTime.current = playhead.frame
         },
       },
     })
@@ -118,18 +114,41 @@ export function useScrollVideo({
     }
   }, [activate, scrollSpeed, src])
 
+  // interpolate the currentTime value on each animation frame for smoother playback
+  useEffect(() => {
+    if (!activate) return
+
+    const video = videoRef.current
+    if (!video) return
+
+    const updateTime = () => {
+      const diff = targetTime.current - video.currentTime
+      video.currentTime += diff * 0.15
+
+      if (Math.abs(lastFrame.current - video.currentTime) > 0.1) {
+        lastFrame.current = video.currentTime
+        setCurrentTime(video.currentTime)
+      }
+    }
+
+    gsap.ticker.add(updateTime)
+    return () => {
+      gsap.ticker.remove(updateTime)
+    }
+  }, [activate])
+
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
 
-    // invoke callback once metadata is ready so caller can start animations
-    const onMeta = () => {
+    // wait for the full buffer before activating ScrollTrigger
+    const onCanPlay = () => {
       onReady?.()
     }
 
-    video.addEventListener('loadedmetadata', onMeta)
+    video.addEventListener('canplaythrough', onCanPlay)
     return () => {
-      video.removeEventListener('loadedmetadata', onMeta)
+      video.removeEventListener('canplaythrough', onCanPlay)
     }
   }, [onReady])
 
