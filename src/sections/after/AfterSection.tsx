@@ -24,7 +24,7 @@ export default function AfterSection({ onBack }: Props) {
     <>
       <ScrollSectionTrigger
         onTrigger={onBack}
-        text="Go back to the previous section"
+        text=""
         direction="up"
       />
       <FullScrollSection

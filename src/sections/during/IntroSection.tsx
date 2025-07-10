@@ -13,15 +13,16 @@ import IframePlayer from '@/components/common/IframePlayer'
 export default function IntroSection() {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center p-12 text-center bg-white text-black">
-      <SectionHeader title="Coordinated Action During the Storm" />
+      <SectionHeader title="During the Disaster: Breaking the Silos through Coordinated Action" />
       <motion.p
         className="max-w-2xl text-lg mt-4"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.5 }}
       >
-        When a disaster hits, coordination is critical.
-We create shared dashboards and map interfaces to ensure all actors work with the same data, and have the same level of knowledge.
+       When a disaster hits, coordination is critical. <br/>
+      We create shared dashboards and map interfaces to ensure all actors work with the same level of knowledge.
+
       </motion.p>
       <div className='md:w-4/5 w-full flex justify-center mt-8 mb-4'>
 <IframePlayer

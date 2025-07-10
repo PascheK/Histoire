@@ -35,8 +35,8 @@ export default function HeroSection() {
           transition={{ delay: 0.2, duration: 1 }}
           className="text-4xl sm:text-5xl font-bold mb-4 drop-shadow-md"
         >
-          Understanding Disaster Impact with Open Data and Scalable Tools
-        </motion.h1>
+      Beryl - Building Damage Analysis with Open Data and Scalable Tools        
+      </motion.h1>
 
         <motion.p
           initial={{ opacity: 0 }}
@@ -44,16 +44,7 @@ export default function HeroSection() {
           transition={{ delay: 0.4, duration: 1 }}
           className="text-lg sm:text-xl text-white/90 drop-shadow-sm"
         >
-          A transparent, open-source analysis of Hurricane Beryl&apos;s aftermath across the Caribbean.
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.6, duration: 1 }}
-          className="mt-4 text-sm sm:text-base text-white/80 max-w-xl"
-        >
-          A walkthrough of our full disaster analysis workflow—from preparedness to actionable insights.
+          A transparent, open-source analysis of Hurricane Beryl&apos;s aftermath across the Caribbean —from preparedness to actionable insights.
         </motion.p>
         </div>
         

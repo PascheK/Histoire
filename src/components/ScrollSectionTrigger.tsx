@@ -13,7 +13,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react'
 
 type ScrollSectionTriggerProps = {
   onTrigger: () => void
-  text: string
+  text?: string
   direction?: 'down' | 'up' // ← par défaut: 'down'
 }
 

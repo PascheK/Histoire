@@ -29,8 +29,8 @@ export default function IntroSection() {
           transition={{ delay: 0.4, duration: 1 }}
           className="text-lg sm:text-xl text-black/90 drop-shadow-sm"
         >
-          We can’t turn back time to collect data. But we can prepare.
-Using open building footprint datasets and satellite imagery, we create a pre-disaster exposure baseline. Our partnerships with renowned academics as well as local actors enable a fast and cutting edge analysis of the disaster.
+          We can’t turn back time to collect data. But we can prepare: <br/>
+          Using open building footprint datasets and satellite imagery, we create a pre-disaster exposure baseline
         </motion.p>
       </motion.div>
     </section>

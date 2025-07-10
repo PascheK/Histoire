@@ -23,9 +23,10 @@ export default function RecapSection() {
         <SectionHeader title="Crisis Response Summary" />
 
         <p className="mb-10 text-base sm:text-lg opacity-80">
-          The Hurricane Beryl response was structured into three operational phases:
-          preparation, emergency management, and recovery. This page summarizes
-          the critical findings and actions undertaken at each step.
+          The Hurricane Beryl response was structured into three operational phases: <br/>
+Preparation, Emergency Management, and Recovery. <br/>
+The Dashboard below summarises the result of the analysis pipeline.
+
         </p>
           <IframePlayer
   src="https://geoportal-psc.unops.org/arcgis/apps/dashboards/8bbe3516127d4fd09c2f5235a22b26f1"

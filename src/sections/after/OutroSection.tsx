@@ -29,7 +29,7 @@ export default function OutroSection() {
         transition={{ delay: 0.3, duration: 0.6 }}
         className="text-center text-sm md:text-base text-gray-700 max-w-xl mt-4"
       >
-        Adding flood simulation provides another layer of insight for planning recovery.
+Flood simulations provide another layer of insight for recovery planning, enhancing the response and the security of the operations.
       </motion.p>
 
 
