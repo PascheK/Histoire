@@ -11,11 +11,11 @@ import { motion } from 'framer-motion'
 export default function OutroSection() {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center p-12 text-center bg-gray-100 text-black gap-3">
-      <SectionHeader title="A Path Forward" />
+      <SectionHeader title="Flood Simulation" />
 
 
             <VideoPlayer
-        src="/videos/Flood_Simulation.mp4"
+        src="/videos/flood.mp4"
         poster=""
         autoPlay
         muted

@@ -7,7 +7,6 @@
 
 import ScrollSectionTrigger from '@/components/ScrollSectionTrigger'
 import IntroSection from './IntroSection'
-import OutroSection from './OutroSection'
 import {  useRef } from 'react'
 type Props = {
   onNext: () => void
@@ -26,7 +25,6 @@ export default function DuringSection({ onNext, onBack }: Props) {
       />
           <section id='during-section' ref={wrapperRef} className="relative bg-black text-white">
            <IntroSection />
-            <OutroSection />
           </section>
       <ScrollSectionTrigger
         onTrigger={onNext}

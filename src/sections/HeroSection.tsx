@@ -6,7 +6,7 @@
  */
 
 import { motion } from 'framer-motion'
-import { AlertTriangle, ChevronDown } from 'lucide-react'
+import {  ChevronDown } from 'lucide-react'
 import Image from 'next/image'
 
 export default function HeroSection() {
@@ -27,14 +27,7 @@ export default function HeroSection() {
 
       <div className="z-10 flex flex-col items-center max-w-3xl text-white h-[80%] justify-evenly">
         <div className='flex flex-col items-center mb-8'>
-<motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="mb-4"
-        >
-          <AlertTriangle className="w-12 h-12 text-yellow-400 animate-pulse" />
-        </motion.div>
+
 
         <motion.h1
           initial={{ opacity: 0, scale: 0.95 }}
