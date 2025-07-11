@@ -31,7 +31,7 @@ export default function BeforeSection({ onNext }: Props) {
       />
       <ScrollSectionTrigger
         onTrigger={onNext}
-        text=""
+        text="Continue to next section"
         direction="down"
       />
     </>

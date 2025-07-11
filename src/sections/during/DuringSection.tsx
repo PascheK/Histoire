@@ -20,7 +20,7 @@ export default function DuringSection({ onNext, onBack }: Props) {
     <>
       <ScrollSectionTrigger
         onTrigger={onBack}
-        text=""
+        text="Go back to the previous section"
         direction="up"
       />
           <section id='during-section' ref={wrapperRef} className="relative bg-black text-white">
@@ -28,7 +28,7 @@ export default function DuringSection({ onNext, onBack }: Props) {
           </section>
       <ScrollSectionTrigger
         onTrigger={onNext}
-        text=""
+        text="Continue to next section"
         direction="down"
       />
     </>
