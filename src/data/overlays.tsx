@@ -19,8 +19,8 @@ export const beforeOverlays: OverlayItem[] = [
         Before disaster strikes, we rely on open-source data to understand what&apos;s at risk, or what has been affected by a disaster
       </p>
                       <Image
-            src={'/images/pre-ex.png'}
-            alt={'image of pre-disaster buildings'}
+            src={'/images/number-of-building.png'}
+            alt={'image of number of buildings'}
             width={200}
             height={100}
             className="object-contain w-full lg:h-100 h-50"
@@ -33,61 +33,66 @@ export const beforeOverlays: OverlayItem[] = [
     
   {
     key: 'before-2',
-    appear: 4,
-    disappear: 10,
+    appear: 6,
+    disappear: 11,
     align: 'bottom right',
     type: 'success',
     content: (
-      <p className="md:text-2xl text-xl font-medium">
+      <>
+         <p className="md:text-2xl text-xl font-medium">
         AI-based segmentation on VHR imagery provides high-quality building data, complementing open source datasets
       </p>
-    ),
-    withIcon: false,
-  },
-  {
-    key: 'before-3',
-    appear: 10,
-    disappear: 15,
-    align: 'top right',
-    type: 'warning',
-    content: (
-      <p className="md:text-2xl text-xl font-medium">
-        Early warning systems detect disasters in real time
-      </p>
-    ),
-    withIcon: false,
-  },
-  {
-    key: 'before-4',
-    appear: 15,
-    disappear: 20,
-    align: 'center',
-    type: 'info',
-    content: (
-      <>  
-         <p className="md:text-2xl text-xl font-medium">
-        Collaborating with local agencies and academics improves preparedness and resilience
-      </p>
-                          <Image
-            src={'/images/pre-ex.png'}
-            alt={'image of pre-disaster buildings'}
+                            <Image
+            src={'/images/pre.png'}
+            alt={'image of number of buildings'}
             width={200}
             height={100}
             className="object-contain w-full lg:h-100 h-50"
 
-          /></>
+          />
+      </>
    
     ),
     withIcon: false,
   },
   {
+    key: 'before-3',
+    appear: 12,
+    disappear: 18,
+    align: 'top right',
+    type: 'warning',
+    content: (
+      <>
+      <Image
+            src={'/images/image3.png'}
+            alt={'image of n Early warning systems'}
+            width={200}
+            height={100}
+            className="object-contain w-full lg:h-100 h-50"
+
+          />
+      <p className="md:text-2xl text-xl font-medium">
+        Early warning systems detect disasters in real time
+      </p>
+      </>
+    ),
+    withIcon: false,
+  },
+
+  {
     key: 'before-5',
-    appear: 20,
+    appear: 19,
     disappear: 30,
     align: 'fullscreen',
     type: 'transparent',
     content: (
-            <PartnerNetwork />
+      <>
+               <p className="md:text-2xl text-xl font-medium">
+        Collaborating with local agencies and academics improves preparedness and resilience
+      </p>
+                  <PartnerNetwork />
+
+      </>
       
     ),
     withIcon: false,
@@ -102,9 +107,20 @@ export const afterOverlays: OverlayItem[] = [
     align: 'top left',
     type: 'info',
     content: (
+      <>
       <p className="md:text-2xl text-xl font-medium">
         Sentinel-1 CCD shows where structures are likely damaged.
       </p>
+      <Image
+            src={'/images/image4.png'}
+            alt={'image of  Sentinel-1 CCD '}
+            width={200}
+            height={100}
+            className="object-contain w-full lg:h-100 h-50"
+
+          />
+      </>
+      
     ),
     withIcon: false,
   },
@@ -115,9 +131,20 @@ export const afterOverlays: OverlayItem[] = [
     align: 'top right',
     type: 'info',
     content: (
+      <>
       <p className="md:text-2xl text-xl font-medium">
      Filtered SAM buildings intersecting Sentinel-1 CCD hotspots
       </p>
+      <Image
+            src={'/images/image5.png'}
+            alt={'image of  Filtered SAM buildings'}
+            width={200}
+            height={100}
+            className="object-contain w-full lg:h-100 h-50"
+
+          />
+      </>
+      
     ),
     withIcon: false,
   },
@@ -128,9 +155,20 @@ export const afterOverlays: OverlayItem[] = [
     align: 'center',
     type: 'info',
     content: (
+      <>
       <p className="md:text-2xl text-xl font-medium">
         Estimated debris volume per structure based on DSM elevation
       </p>
+            <Image
+            src={'/images/image6.png'}
+            alt={'image of Estimated debris volume'}
+            width={200}
+            height={100}
+            className="object-contain w-full lg:h-100 h-50"
+
+          />
+      </>
+      
     ),
     withIcon: false,
   },
@@ -146,8 +184,8 @@ export const afterOverlays: OverlayItem[] = [
 Analysis scaled across all affected islands
      </p>
       <Image
-            src={'/images/pre-ex.png'}
-            alt={'image of pre-disaster buildings'}
+            src={'/images/image7.png'}
+            alt={'image of Analysis '}
             width={200}
             height={100}
             className="object-contain w-full lg:h-100 h-50"

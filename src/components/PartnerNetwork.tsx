@@ -92,15 +92,6 @@ export default function PartnerNetwork() {
         </motion.div>
       ))}
 
-      {/* Caption */}
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ delay: 0.3, duration: 0.6 }}
-        className="absolute bottom-0 text-center text-sm md:text-base text-gray-700 dark:text-gray-300 max-w-xl"
-      >
-        Established partnerships with specialists and local entities enable efficient and accurate response.
-      </motion.p>
     </section>
   );
 }
