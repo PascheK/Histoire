@@ -20,21 +20,24 @@ export default function RecapSection() {
         viewport={{ once: true }}
         className="w-full max-w-4/5 flex flex-col items-center gap-6"
       >
-        <SectionHeader title="Crisis Response Summary" />
+        <SectionHeader title="Disaster Response Summary
+" />
 
         <p className="mb-10 text-base sm:text-lg opacity-80">
-          The Hurricane Beryl response was structured into three operational phases: <br/>
-Preparation, Emergency Management, and Recovery. <br/>
-The Dashboard below summarises the result of the analysis pipeline.
+          The Hurricane Beryl response was structured
+          into three operational phases:
 
+          Establishing the Baseline, Monitoring the Situation, and Assessing the Damage.
+
+          The Dashboard below summarises the result of the analysis pipeline.
         </p>
-          <IframePlayer
-  src="https://geoportal-psc.unops.org/arcgis/apps/dashboards/8bbe3516127d4fd09c2f5235a22b26f1"
-  allow="autoplay; encrypted-media"
-  allowFullScreen
-  className="w-full"
-/>  
- 
+        <IframePlayer
+          src="https://geoportal-psc.unops.org/arcgis/apps/dashboards/8bbe3516127d4fd09c2f5235a22b26f1"
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+          className="w-full"
+        />
+
         <motion.a
           href="/beryl-report.pdf"
           download

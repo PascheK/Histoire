@@ -12,8 +12,7 @@ type Props = {
  */
 export default function Navbar({ selected, onSelect, canChangeSection, onChangeSection, onNavbarChanged }: Props) {
   const btnClass = (val: string) =>
-    `px-6 py-2 rounded-full transition focus-visible:outline-none focus-visible:ring focus-visible:ring-white ${
-      selected === val ? 'bg-white text-black font-bold' : 'bg-black/60 text-white'
+    `px-6 py-2 rounded-full transition focus-visible:outline-none focus-visible:ring focus-visible:ring-white ${selected === val ? 'bg-white text-black font-bold' : 'bg-black/60 text-white'
     }`
   const handleClick = (section: 'before' | 'during' | 'after') => {
     // prevent double clicks while a transition is running
@@ -30,7 +29,7 @@ export default function Navbar({ selected, onSelect, canChangeSection, onChangeS
         aria-current={selected === 'before' ? 'page' : undefined}
         type="button"
       >
-        Before
+        Laying the Groundwork
       </button>
       <button
         onClick={() => handleClick('during')}
@@ -38,7 +37,7 @@ export default function Navbar({ selected, onSelect, canChangeSection, onChangeS
         aria-current={selected === 'during' ? 'page' : undefined}
         type="button"
       >
-        During
+        Monitoring the Situation
       </button>
       <button
         onClick={() => handleClick('after')}
@@ -46,7 +45,7 @@ export default function Navbar({ selected, onSelect, canChangeSection, onChangeS
         aria-current={selected === 'after' ? 'page' : undefined}
         type="button"
       >
-        After
+        Assessing the Damage
       </button>
     </nav>
   )
