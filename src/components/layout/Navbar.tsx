@@ -29,7 +29,7 @@ export default function Navbar({ selected, onSelect, canChangeSection, onChangeS
         aria-current={selected === 'before' ? 'page' : undefined}
         type="button"
       >
-        Laying the Groundwork
+        Establishing the Baseline
       </button>
       <button
         onClick={() => handleClick('during')}

@@ -15,7 +15,7 @@ import SectionHeader from '@/components/common/SectionHeader'
 export default function IntroSection() {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center p-12 text-center bg-white text-black">
-      <SectionHeader title="Laying the Groundwork" />
+      <SectionHeader title="Establishing the Baseline" />
       <motion.h2 className='text-xl sm:text-2xl font-semibold mb-4 drop-shadow-md'>
         Preparedness Before Disaster Strikes
       </motion.h2>
