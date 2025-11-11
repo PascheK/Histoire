@@ -22,22 +22,29 @@ Interactive scroll-driven storytelling site about Hurricane Beryl built with Nex
 ## Getting Started
 
 1. Install dependencies
-   ```bash
-   npm install
-   ```
-2. Start the development server
-   ```bash
-   npm run dev
-   ```
-3. Lint the codebase
-   ```bash
-   npm run lint
-   ```
-4. Create a production build
-   ```bash
-   npm run build
-   npm start
-   ```
+
+```bash
+npm install
+```
+
+1. Start the development server
+
+```bash
+npm run dev
+```
+
+1. Lint the codebase
+
+```bash
+npm run lint
+```
+
+1. Create a production build
+
+```bash
+npm run build
+npm start
+```
 
 Open [http://localhost:3000](http://localhost:3000) to view the site locally.
 
@@ -50,7 +57,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the site locally.
 
 ## Folder Structure
 
-```
+```text
 src/
   app/                      # Next.js entry points
   components/
@@ -64,6 +71,14 @@ src/
   utils/                   # Helper utilities (overlay rendering)
   types/                   # TypeScript types
 ```
+
+The underlying hook `useScrollVideo` exposes:
+
+- `currentTime`
+- `scrollToCheckpoint(index)`
+- `checkpoints[]`
+- `autoScrollEnabled` and `toggleAutoScroll()`
+
 
 ## Adding New Sections
 
@@ -84,3 +99,29 @@ A demo deployment is available at: [https://beryl-impact-mockup.vercel.app](http
 ## License & Attribution
 
 This project is licensed under the MIT License. UI icons are provided by [Lucide](https://lucide.dev/).
+
+## AutoScrollVideoSection
+
+A reusable section that binds a video to scroll progress with GSAP + ScrollTrigger, adds automatic progression between checkpoints, and displays interactive hotspots that open an animated details modal.
+
+Example:
+
+```tsx
+<AutoScrollVideoSection
+   src="/videos/presentation.mp4"
+   scrollSpeed={500}
+   autoScroll
+   autoScrollThreshold={120}
+   overlays={[
+      { id: 'jeudi-noir', time: 5, title: 'Jeudi noir', description: 'Début du krach', image: '/images/image4.png', position: { xPercent: 25, yPercent: 65 } },
+      { id: 'propagation', time: 15, title: 'Propagation', description: 'Crise bancaire mondiale' }
+   ]}
+/>
+```
+
+The underlying hook `useScrollVideo` exposes:
+
+- `currentTime`
+- `scrollToCheckpoint(index)`
+- `checkpoints[]`
+- `autoScrollEnabled` and `toggleAutoScroll()`

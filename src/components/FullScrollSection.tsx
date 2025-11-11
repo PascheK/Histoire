@@ -9,9 +9,11 @@
 import { useRef, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import ScrollVideoSection from './ScrollVideoSection'
+import AutoScrollVideoSection from './AutoScrollVideoSection'
 import type { ReactElement } from 'react'
 import type { OverlayProps } from './Overlay'
+import type { Hotspot } from '@/types/hotspot'
+import type { ReactElement as RE } from 'react'
 gsap.registerPlugin(ScrollTrigger)
 
 interface FullScrollSectionProps {
@@ -21,6 +23,18 @@ interface FullScrollSectionProps {
   overlays?: ReactElement<OverlayProps> | ReactElement<OverlayProps>[]
   introSection: ReactElement
   outroSection: ReactElement
+  // New optional props forwarded to AutoScrollVideoSection
+  autoScroll?: boolean
+  autoScrollThreshold?: number
+  autoScrollMode?: 'continuous' | 'step'
+  checkpoints?: number[]
+  hotspots?: Hotspot[]
+  controls?: (api: {
+    currentCheckpointIndex: number
+    checkpoints: number[]
+    scrollToCheckpoint: (index: number) => void
+    isReady: boolean
+  }) => RE | null
 }
 
 /**
@@ -35,6 +49,12 @@ export default function FullScrollSection({
   overlays,
   introSection,
   outroSection,
+  autoScroll = false,
+  autoScrollThreshold = 100,
+  autoScrollMode = 'step',
+  checkpoints,
+  hotspots = [],
+  controls,
 }: FullScrollSectionProps) {
   const wrapperRef = useRef<HTMLDivElement>(null)
   // track when the video metadata has loaded so ScrollTrigger can be activated
@@ -53,15 +73,21 @@ export default function FullScrollSection({
         </div>
       )}
 
-      {/* Vidéo scrollable */}
-      <ScrollVideoSection
+      {/* Vidéo scrollable + auto-scroll + hotspots */}
+      <AutoScrollVideoSection
         src={videoSrc}
         scrollSpeed={scrollSpeed}
         activateTriggers={videoReady}
+        autoScroll={autoScroll}
+        autoScrollThreshold={autoScrollThreshold}
+        autoScrollMode={autoScrollMode}
+        checkpoints={checkpoints}
+        overlays={hotspots}
         onReady={() => setVideoReady(true)}
+        controls={controls}
       >
         {overlays}
-      </ScrollVideoSection>
+      </AutoScrollVideoSection>
 
       {/* Section Outro */}
       {outroSection}

@@ -33,26 +33,27 @@ export type OverlayProps = {
  * should appear on screen.
  */
 function getPositionClass(align?: string): string {
-  const base = align === 'fullscreen' ?
-    'absolute inset-0 p-6 w-screen h-screen flex items-center justify-center' :
-    'absolute p-3 sm:p-6 w-[100vw] max-w-xs sm:max-w-md lg:min-w-4xl min-w-full flex flex-col items-center justify-center max-h-[90vh] overflow-y-auto'
-
-  const positionMap: Record<string, string> = {
-    top: 'top-4 left-1/2 -translate-x-1/2 sm:left-1/2',
-    bottom: 'bottom-14 left-1/2 -translate-x-1/2 sm:left-1/2',
-    left: 'top-1/2 left-4 -translate-y-1/2 sm:top-1/2',
-    right: 'top-1/2 right-4 -translate-y-1/2 sm:top-1/2',
-    center: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
-    'top left': 'top-4 left-1/2 -translate-x-1/2 sm:left-4 sm:translate-x-0',
-    'top right': 'top-4 left-1/2 -translate-x-1/2 sm:left-auto sm:right-4 sm:translate-x-0',
-    'bottom left': 'bottom-14 left-1/2 -translate-x-1/2 sm:left-4 sm:translate-x-0',
-    'bottom right': 'bottom-14 left-1/2 -translate-x-1/2 sm:left-auto sm:right-4 sm:translate-x-0',
+  // Base area: use a quadrant (1/2 width x 1/2 height). The inner box will take 75% of this area.
+  if (align === 'fullscreen') {
+    return 'absolute inset-0 p-6 w-screen h-screen flex items-center justify-center';
   }
 
+  const quadrantBase = 'absolute w-1/2 h-1/2 flex items-center justify-center p-2 sm:p-4';
 
-  const alignment = align ?? 'center'
+  const quadrantPos: Record<string, string> = {
+    top: 'top-0 left-1/2 -translate-x-1/2',
+    bottom: 'bottom-0 left-1/2 -translate-x-1/2',
+    left: 'top-1/2 left-0 -translate-y-1/2',
+    right: 'top-1/2 right-0 -translate-y-1/2',
+    center: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+    'top left': 'top-0 left-0',
+    'top right': 'top-0 right-0',
+    'bottom left': 'bottom-0 left-0',
+    'bottom right': 'bottom-0 right-0',
+  };
 
-  return `${base} ${positionMap[alignment] || positionMap['center']}`
+  const alignment = align ?? 'center';
+  return `${quadrantBase} ${quadrantPos[alignment] || quadrantPos['center']}`;
 }
 
 /**
@@ -81,15 +82,17 @@ export default function Overlay({
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.4 }}
-          className={`${getPositionClass(align)} ${className} z-50 backdrop-blur-sm bg-black/70 text-white rounded-xl shadow-lg`}
-        >
-          <div className="w-full text-center space-y-3 text-xs sm:text-sm md:text-base leading-relaxed">
-            
-            {children}
-          </div>
-        </motion.div>
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4 }}
+            className={`${getPositionClass(align)} ${className} z-50`}
+          >
+            {/* Inner content box: centered inside its quadrant, roughly 1/8 screen (1/2 of quadrant size) */}
+            <div className="max-w-full max-h-full flex items-center justify-center">
+              <div className="backdrop-blur-sm bg-black/70 text-white rounded-3xl shadow-2xl px-10 sm:px-12 py-8 sm:py-9 overflow-auto text-center space-y-8 text-4xl sm:text-5xl md:text-6xl leading-relaxed w-full h-full flex flex-col justify-center">
+                {children}
+              </div>
+            </div>
+          </motion.div>
       )}
     </AnimatePresence>
   )

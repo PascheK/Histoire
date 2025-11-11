@@ -1,52 +1,46 @@
-/** Properties for the section navigation bar. */
+import { ChevronLeft, ChevronRight } from "lucide-react"
+
+/** Properties for the checkpoint navigation bar. */
 type Props = {
-  selected: 'before' | 'during' | 'after' | null
-  onSelect: (val: 'before' | 'during' | 'after') => void
-  canChangeSection: boolean
-  onChangeSection: (val: boolean) => void
-  onNavbarChanged: (val: boolean) => void
+  onPrev: () => void
+  onNext: () => void
+  disablePrev?: boolean
+  disableNext?: boolean
+  /** Index courant du checkpoint (0-based) */
+  currentIndex?: number
+  /** Nombre total de checkpoints */
+  total?: number
+  /** Affiche le compteur (ex: 3 / 10) */
+  showCounter?: boolean
 }
 
 /**
- * Sticky bottom navigation allowing users to jump between sections.
+ * Sticky bottom navigation allowing users to jump between checkpoints.
  */
-export default function Navbar({ selected, onSelect, canChangeSection, onChangeSection, onNavbarChanged }: Props) {
-  const btnClass = (val: string) =>
-    `px-6 py-2 rounded-full transition focus-visible:outline-none focus-visible:ring focus-visible:ring-white ${selected === val ? 'bg-white text-black font-bold' : 'bg-black/60 text-white'
-    }`
-  const handleClick = (section: 'before' | 'during' | 'after') => {
-    // prevent double clicks while a transition is running
-    if (!canChangeSection || section === selected) return
-    onChangeSection(false)
-    onNavbarChanged(true)
-    onSelect(section)
-  }
+export default function Navbar({ onPrev, onNext, disablePrev, disableNext, currentIndex, total, showCounter = true }: Props) {
+  const btnClass = "px-6 py-2 rounded-full transition focus-visible:outline-none focus-visible:ring focus-visible:ring-white bg-black/60 text-white hover:bg-white/80 hover:text-black disabled:bg-black/30 disabled:text-white/50 disabled:cursor-not-allowed"
   return (
-    <nav className="flex gap-6 bg-black/30 backdrop-blur px-6 py-3 rounded-full shadow-lg">
+    <nav className="flex items-center gap-4 backdrop-blur px-4 py-2 rounded-full shadow-lg bg-black/50">
       <button
-        onClick={() => handleClick('before')}
-        className={btnClass('before')}
-        aria-current={selected === 'before' ? 'page' : undefined}
+        onClick={onPrev}
+        className={btnClass}
         type="button"
+        disabled={disablePrev}
       >
-        Establishing the Baseline
+        <ChevronLeft />
       </button>
+
       <button
-        onClick={() => handleClick('during')}
-        className={btnClass('during')}
-        aria-current={selected === 'during' ? 'page' : undefined}
+        onClick={onNext}
+        className={btnClass}
         type="button"
+        disabled={disableNext}
       >
-        Monitoring the Situation
+        <ChevronRight />
       </button>
-      <button
-        onClick={() => handleClick('after')}
-        className={btnClass('after')}
-        aria-current={selected === 'after' ? 'page' : undefined}
-        type="button"
-      >
-        Assessing the Damage
-      </button>
+      {showCounter && typeof currentIndex === 'number' && typeof total === 'number' && (
+        <span className="text-white/80 text-sm tabular-nums">{currentIndex + 1} / {total}</span>
+      )}
     </nav>
   )
 }

@@ -52,7 +52,7 @@ export default function ScrollVideoSection({
     <div ref={containerRef} className="relative bg-black z-0">
       <div
         ref={wrapperRef}
-        className="sticky top-0 w-screen h-screen flex items-center justify-center z-10 overflow-hidden scale-[0.8] will-change-transform backface-hidden"
+        className="sticky top-0 w-screen h-screen flex items-center justify-center z-10 overflow-hidden will-change-transform backface-hidden"
       >
         {/* Background video, controlled via scroll */}
         <video

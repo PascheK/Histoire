@@ -9,7 +9,7 @@
 import { useEffect, useState } from 'react'
 
 // List of videos to preload
-const videoSources = ['/videos/pre.mp4', '/videos/post.mp4']
+const videoSources = ['/videos/crise_1929.mp4']
 
 export default function AppWrapper({ children }: { children: React.ReactNode }) {
   const [isReady, setIsReady] = useState(false)
