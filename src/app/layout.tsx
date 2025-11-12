@@ -13,6 +13,7 @@ import LoadingOverlay from "@/components/layout/LoadingOverlay";
 import { LoadingOverlayProvider } from "@/context/LoadingOverlayContext";
 import AppWrapper from "@/components/layout/AppWrapper";
 import { SmoothScrollProvider } from "@/context/ScrollContext";
+import MobileGuard from "@/components/layout/MobileGuard";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,24 +36,21 @@ export const metadata: Metadata = {
  * @param {Readonly<{children: React.ReactNode}>} props React children to render
  * inside the layout.
  */
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <SmoothScrollProvider>
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <LoadingOverlayProvider>
-          <AppWrapper>{children}<LoadingOverlay text="Loading..." />
-</AppWrapper>
-        </LoadingOverlayProvider>
-      </body>
-    </html>
+      <html lang="fr">
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <LoadingOverlayProvider>
+            <AppWrapper>
+              <MobileGuard>
+                {children}
+              </MobileGuard>
+              <LoadingOverlay text="Loading..." />
+            </AppWrapper>
+          </LoadingOverlayProvider>
+        </body>
+      </html>
     </SmoothScrollProvider>
-
   );
 }
