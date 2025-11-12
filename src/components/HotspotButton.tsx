@@ -25,7 +25,7 @@ export function HotspotButton({ hotspot, onClick, active }: HotspotButtonProps) 
       animate={{ scale: active ? 1 : 0, opacity: active ? 1 : 0 }}
       exit={{ scale: 0, opacity: 0 }}
       transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-      className="absolute z-40 w-10 h-10 rounded-full bg-emerald-500 text-white shadow-lg flex items-center justify-center ring-2 ring-white/60 hover:scale-110 focus:outline-none"
+      className="absolute z-400 w-10 h-10 rounded-full bg-emerald-500 text-white shadow-lg flex items-center justify-center ring-2 ring-white/60 hover:scale-110 focus:outline-none"
       style={style}
       onClick={() => onClick(hotspot)}
       aria-label={`Show details for ${hotspot.title}`}
