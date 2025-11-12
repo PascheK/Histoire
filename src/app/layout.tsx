@@ -8,7 +8,7 @@
  */
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "../styles/globals.css";
+import "./globals.css";
 import LoadingOverlay from "@/components/layout/LoadingOverlay";
 import { LoadingOverlayProvider } from "@/context/LoadingOverlayContext";
 import AppWrapper from "@/components/layout/AppWrapper";
